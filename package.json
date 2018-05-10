@@ -1,0 +1,45 @@
+{
+  "name": "apicco",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "postinstall": "bash ./cli/install.sh",
+    "test": "bash ./cli/test.sh",
+    "lint": "./node_modules/eslint/bin/eslint.js .",
+    "lint:fix": "prettier-eslint --write '**/*?(.test).js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*?(.test).js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sokratisvidros/apicco.git"
+  },
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
+  "contributors": [
+    {
+      "name": "Sokratis Vidros",
+      "email": "sokratis.vidros@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sokratisvidros/apicco/issues"
+  },
+  "homepage": "https://github.com/sokratisvidros/apicco#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1"
+  }
+}

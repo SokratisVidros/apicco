@@ -1,0 +1,14 @@
+{
+  "rootDir": "..",
+  "testEnvironment": "node",
+  "collectCoverageFrom": [
+    "**/*.{js}"
+  ],
+  "globalSetup": "<rootDir>/config/jest/setup.js",
+  "globalTeardown": "<rootDir>/config/jest/teardown.js",
+  "setupTestFrameworkScriptFile": "<rootDir>/config/jest/prepareFramework.js",
+  "testPathIgnorePatterns": [
+    "/node_modules/"
+  ],
+  "verbose": true
+}
