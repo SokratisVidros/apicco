@@ -2,53 +2,32 @@
   "name": "apicco",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "scripts": {
-    "start": "npm run server",
-    "watch": "nodemon server.js --config 'config/nodemon.json'",
-    "test": "./cli/test",
-    "test:update": "npm test -- -u",
-    "coverage": "echo 'not available yet'"
-  },
+  "main": "index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sokratisvidros/apicco.git"
   },
-  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
+  "bin": {
+    "apicco": "./bin/apicco.js"
+  },
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com.com>",
   "contributors": [
     {
       "name": "Sokratis Vidros",
       "email": "sokratis.vidros@gmail.com"
     }
   ],
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sokratisvidros/apicco/issues"
   },
   "homepage": "https://github.com/sokratisvidros/apicco#readme",
   "dependencies": {
-    "@koa/cors": "^2.2.1",
-    "boom": "^7.2.0",
-    "chalk": "^2.3.2",
-    "dotenv": "^5.0.0",
-    "figlet": "^1.2.0",
-    "joi": "^13.1.2",
-    "koa": "^2.5.0",
-    "koa-bodyparser": "^4.2.0",
-    "koa-helmet": "^3.3.0",
-    "koa-router": "^7.4.0",
-    "koa-sslify": "^2.1.2",
-    "lodash": "^4.17.5",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "require-directory": "^2.1.1",
-    "riviere": "^0.2.24"
+    "commander": "^2.15.1",
+    "copy": "^0.3.2"
   },
-  "devDependencies": {
-    "jest": "^22.4.3",
-    "nodemon": "^1.17.3",
-    "supertest": "^3.0.0"
-  },
+  "devDependencies": {},
   "engines": {
     "node": "~8.11.1"
   }

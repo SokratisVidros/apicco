@@ -7,7 +7,7 @@ const helmet = require('koa-helmet');
 const cors = require('@koa/cors');
 const riviere = require('riviere');
 const Router = require('koa-router');
-const apicco = require('../lib');
+const apicco = require('apicco-lib');
 const handleHttpError = require('./support/handleHttpError');
 
 // TODO: Enable Cors
