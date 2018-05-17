@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "postinstall": "bash ./cli/install.sh",
-    "test": "bash ./cli/test.sh",
+    "postinstall": "bash ./scripts/install.sh",
+    "test": "bash ./scripts/test.sh",
     "lint": "./node_modules/eslint/bin/eslint.js .",
     "lint:fix": "prettier-eslint --write '**/*?(.test).js'",
     "precommit": "lint-staged"
