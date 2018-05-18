@@ -11,7 +11,7 @@
   "bin": {
     "apicco": "./bin/apicco.js"
   },
-  "author": "Sokratis Vidros <sokratis.vidros@gmail.com.com>",
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
   "contributors": [
     {
       "name": "Sokratis Vidros",
