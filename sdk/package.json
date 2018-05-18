@@ -1,0 +1,29 @@
+{
+  "name": "apicco-sdk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js --runInBand --no-cache",
+    "test:update": "npm test -- -u"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sokratisvidros/apicco.git"
+  },
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
+  "contributors": [
+    {
+      "name": "Sokratis Vidros",
+      "email": "sokratis.vidros@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^22.4.4",
+    "nock": "^9.2.6"
+  },
+  "dependencies": {
+    "tiny-json-http": "^7.0.0"
+  }
+}

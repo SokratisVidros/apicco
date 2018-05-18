@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Apicco Client discovers all API methods along with their parameters automatically 1`] = `
+Object {
+  "fruits": Object {
+    "eat": [Function],
+    "info": [Function],
+    "list": [Function],
+  },
+}
+`;
