@@ -2,7 +2,7 @@
 
 trap 'exit 1' 30 SIGINT
 
-PACKAGES=`find . -name package.json -not -path '*/node_modules/*' -mindepth 2`
+PACKAGES=`find . -name package.json -not -path '*/node_modules/*' -mindepth 2 -maxdepth 3`
 
 for project in $PACKAGES; do
   (
