@@ -1,6 +1,6 @@
 {
   "name": "apicco-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/sokratisvidros/apicco.git"
   },
-  "author": "Sokratis Vidros <sokratis.vidros@gmail.com.com>",
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
   "contributors": [
     {
       "name": "Sokratis Vidros",
