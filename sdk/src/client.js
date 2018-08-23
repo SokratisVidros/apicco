@@ -7,7 +7,7 @@ const { buildNsFromApi } = require('./helpers');
 async function createClient({
   api = {},
   origin = '',
-  relPath = '',
+  relPath = 'api/v1',
   intercept = async (req) => req
 } = {}) {
   api = await discover(api, origin, relPath, intercept);
