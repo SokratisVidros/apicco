@@ -13,14 +13,8 @@ describe('Apicco Client', () => {
       .get('/api/v1/discovery')
       .reply(200, {
         'fruits.list': [],
-        'fruits.info': [
-          '*fruit_id'
-        ],
-        'fruits.eat': [
-          '*name',
-          '*vitamins',
-          'ripe'
-        ]
+        'fruits.info': ['*fruit_id'],
+        'fruits.eat': ['*name', '*vitamins', 'ripe']
       });
 
     apicco = await apiccoClient({
@@ -49,7 +43,7 @@ describe('Apicco Client', () => {
       expect(fruits).toEqual(['🍉', '🍊', '🍋']);
     });
 
-    it('request methods exposes a callback api', done => {
+    it('request methods exposes a callback api', (done) => {
       apicco.fruits.list((err, fruits) => {
         expect(err).toBeNull();
         expect(fruits).toEqual(['🍉', '🍊', '🍋']);
@@ -81,7 +75,7 @@ describe('Apicco Client', () => {
       }
     });
 
-    it('request methods exposes a callback api', done => {
+    it('request methods exposes a callback api', (done) => {
       apicco.fruits.list((err, fruits) => {
         expect(err).toEqual({
           error: 'Bad Request',
@@ -105,9 +99,7 @@ describe('Apicco Client', () => {
       try {
         await apicco.fruits.eat();
       } catch (err) {
-        expect(err.message).toBe(
-          'fruits.eat missing params: name, vitamins'
-        );
+        expect(err.message).toBe('fruits.eat missing params: name, vitamins');
       }
     });
   });

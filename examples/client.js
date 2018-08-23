@@ -2,7 +2,7 @@ const apicco = require('../sdk/index');
 
 apicco({
   origin: 'http://localhost:3000'
-}).then(async api => {
+}).then(async (api) => {
   console.log('Create a new movie...');
   console.log('POST api/v1/movies/create...');
   const newMovie = await api.movies.create({
@@ -29,7 +29,7 @@ apicco({
   console.log('\nDelete existing movie...');
   console.log('POST api/v1/movies.delete...');
   await api.movies.delete({
-    movie_id: updatedMovie.id,
+    movie_id: updatedMovie.id
   });
 
   console.log('\nList all movies...');

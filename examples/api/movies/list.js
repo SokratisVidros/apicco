@@ -5,4 +5,4 @@ async function handle({ movies, request, response }) {
 
 module.exports = {
   handle
-}
+};

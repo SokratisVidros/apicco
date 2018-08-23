@@ -1,6 +1,6 @@
 function promisify(orig) {
-  return function(...args) {
-    return new Promise(function(resolve, reject) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
       function errback(err, result) {
         if (err) {
           reject(err);
@@ -15,7 +15,7 @@ function promisify(orig) {
 }
 
 function buildNsFromApi(api, ns, request) {
-  Object.keys(api).forEach(key => {
+  Object.keys(api).forEach((key) => {
     // split key namespacing, example users.info --> ['users', 'info']
     const parts = key.split('.');
 
@@ -42,7 +42,7 @@ function buildNsFromApi(api, ns, request) {
         }
         _iterator(obj[nextPart]);
       }
-    })(ns[root]);
+    }(ns[root]));
   });
 
   return ns;

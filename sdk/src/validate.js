@@ -11,9 +11,9 @@ function buildValidate(api = {}) {
       param => typeof params[param] === 'undefined'
     );
 
-    return missing.length ?
-      new Error(`${action} missing params: ${missing.join(', ')}`) :
-      null;
+    return missing.length
+      ? new Error(`${action} missing params: ${missing.join(', ')}`)
+      : null;
   };
 }
 

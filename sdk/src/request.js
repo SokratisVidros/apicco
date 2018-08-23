@@ -3,7 +3,6 @@ const { promisify } = require('./helpers');
 
 function buildRequest(url, validate, intercept) {
   function doRequest(action, data, callback) {
-
     const err = validate(action, data);
 
     if (err) {
@@ -20,15 +19,13 @@ function buildRequest(url, validate, intercept) {
     };
 
     return intercept(req)
-      .then(req => {
-        return http.post(req, (err, res) => {
-          if (err) {
-            callback(err);
-            return;
-          }
-          callback(null, res.body);
-        });
-      })
+      .then(req => http.post(req, (err, res) => {
+        if (err) {
+          callback(err);
+          return;
+        }
+        callback(null, res.body);
+      }))
       .catch(e => callback(e));
   }
 

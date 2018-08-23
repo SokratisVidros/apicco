@@ -1,0 +1,32 @@
+{
+  "extends": "airbnb-base",
+  "root": true,
+  "plugins": [],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "globals": {},
+  "rules": {
+    "no-process-env": "off",
+    "no-console": "warn",
+    "quotes": ["error", "single"],
+    "max-len": [
+      "error",
+      {
+        "code": 80,
+        "comments": 80,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "comma-dangle": ["error", "never"],
+    "no-await-in-loop": "off",
+    "no-return-await": "off",
+    "require-await": "off",
+    "prefer-destructuring": "off"
+  }
+}

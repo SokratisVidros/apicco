@@ -2,7 +2,9 @@ const Boom = require('boom');
 const Joi = require('joi');
 
 const validate = {
-  movie_id: Joi.number().integer().required()
+  movie_id: Joi.number()
+    .integer()
+    .required()
 };
 
 async function handle({ movies, request, response }, next) {
@@ -21,4 +23,4 @@ async function handle({ movies, request, response }, next) {
 module.exports = {
   validate,
   handle
-}
+};

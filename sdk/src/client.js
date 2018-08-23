@@ -8,7 +8,7 @@ async function createClient({
   api = {},
   origin = '',
   relPath = 'api/v1',
-  intercept = async (req) => req
+  intercept = async req => req
 } = {}) {
   api = await discover(api, origin, relPath, intercept);
 
