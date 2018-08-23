@@ -46,3 +46,23 @@ Apicco API returns JSON error objects that contain human friendly error messages
   "message": "Invalid Request Body - child \"foo_id\" fails because [\"foo_id\" must be a number]",
   "statusCode": 400
 ```
+
+### Options
+
+**origin**
+
+Specify the origin of the Apicco API server
+
+_Defaults to `''`_
+
+**relPath**
+
+Specify the relative of the Apicco API
+
+_Defaults to `api/v1`_
+
+**intercept**
+
+Specify an interceptor function that will be executed before each request
+
+_Defaults to `async (req) => req`_
