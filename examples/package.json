@@ -1,0 +1,28 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "The fastest way to build JSON APIs in [Koa.js](https://koajs.com/)",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "demo": "node client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sokratisvidros/apicco.git"
+  },
+  "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
+  "contributors": [
+    {
+      "name": "Sokratis Vidros",
+      "email": "sokratis.vidros@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "joi": "^13.6.0",
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1"
+  }
+}
