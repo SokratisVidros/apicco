@@ -7,7 +7,8 @@
     "test": "bash ./scripts/test.sh",
     "lint": "./node_modules/eslint/bin/eslint.js .",
     "lint:fix": "prettier-eslint --write '**/*?(.test).js'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepush": "npm test"
   },
   "lint-staged": {
     "*?(.test).js": [
