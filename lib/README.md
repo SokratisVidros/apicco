@@ -128,6 +128,8 @@ const apicco = require('apicco-lib');
 const app = new Koa();
 
 app.use(apicco());
+
+app.listen(3000);
 ```
 
 2. Create your API action files under the main API folder.
