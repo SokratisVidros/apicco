@@ -88,6 +88,19 @@ describe('Apicco Client', () => {
     });
   });
 
+  describe('request method when response is empty', () => {
+    beforeEach(() => {
+      nock('http://apicco.test')
+        .post('/api/v1/fruits.list')
+        .reply(null);
+    });
+
+    it('exposes a promisified api', async () => {
+      const fruits = await apicco.fruits.list();
+      expect(fruits).toEqual('');
+    });
+  });
+
   describe('validations', () => {
     beforeEach(() => {
       nock('http://apicco.test')
