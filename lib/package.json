@@ -24,9 +24,10 @@
   },
   "dependencies": {
     "boom": "^7.2.0",
-    "inflection": "^1.12.0",
+    "joi": "^14.3.1",
     "koa-compose": "^4.1.0",
     "koa-joi-validate": "^0.5.1",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.11"
   }
 }
