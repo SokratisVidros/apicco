@@ -20,6 +20,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "boom": "^7.3.0",
     "joi": "^13.6.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1"

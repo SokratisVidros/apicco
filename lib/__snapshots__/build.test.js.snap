@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buildAPI(opts) sanity check 1`] = `
+Router {
+  "methods": Array [
+    "HEAD",
+    "OPTIONS",
+    "GET",
+    "PUT",
+    "PATCH",
+    "POST",
+    "DELETE",
+  ],
+  "opts": Object {},
+  "params": Object {},
+  "stack": Array [
+    Layer {
+      "methods": Array [],
+      "name": null,
+      "opts": Object {
+        "end": false,
+        "ignoreCaptures": true,
+        "name": undefined,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [
+        Object {
+          "asterisk": false,
+          "delimiter": "/",
+          "name": 0,
+          "optional": false,
+          "partial": false,
+          "pattern": ".*",
+          "prefix": "",
+          "repeat": false,
+        },
+      ],
+      "path": "(.*)",
+      "regexp": /\\^\\(\\(\\?:\\.\\*\\)\\)\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\(\\?=\\\\/\\|\\$\\)/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/api/v1/movies.list",
+      "regexp": /\\^\\\\/api\\\\/v1\\\\/movies\\\\\\.list\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/api/v1/movies.play",
+      "regexp": /\\^\\\\/api\\\\/v1\\\\/movies\\\\\\.play\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/api/v1/discovery",
+      "regexp": /\\^\\\\/api\\\\/v1\\\\/discovery\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "POST",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/api/v1/books.read",
+      "regexp": /\\^\\\\/api\\\\/v1\\\\/books\\\\\\.read\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+    Layer {
+      "methods": Array [
+        "HEAD",
+        "GET",
+      ],
+      "name": null,
+      "opts": Object {
+        "end": true,
+        "ignoreCaptures": undefined,
+        "name": null,
+        "prefix": "",
+        "sensitive": false,
+        "strict": false,
+      },
+      "paramNames": Array [],
+      "path": "/api/v1/discovery",
+      "regexp": /\\^\\\\/api\\\\/v1\\\\/discovery\\(\\?:\\\\/\\(\\?=\\$\\)\\)\\?\\$/i,
+      "stack": Array [
+        [Function],
+      ],
+    },
+  ],
+}
+`;

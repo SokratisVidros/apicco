@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/sokratisvidros/apicco.git"
   },
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js --no-cache --runInBand"
+  },
   "author": "Sokratis Vidros <sokratis.vidros@gmail.com>",
   "contributors": [
     {
@@ -29,5 +32,8 @@
     "koa-joi-validate": "^0.5.1",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.11"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
