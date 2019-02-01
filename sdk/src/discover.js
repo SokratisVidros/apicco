@@ -1,5 +1,6 @@
+require('isomorphic-fetch');
+
 const url = require('url');
-const http = require('tiny-json-http');
 
 async function discover(api, origin, relPath, intercept) {
   if (Object.keys(api).length === 0) {
@@ -9,7 +10,7 @@ async function discover(api, origin, relPath, intercept) {
         'Content-Type': 'application/json'
       }
     });
-    api = (await http.get(req)).body;
+    api = (await fetch(req.url, {...req}).then(res => res.json()));
   }
 
   return api;

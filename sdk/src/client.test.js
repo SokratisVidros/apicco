@@ -56,7 +56,7 @@ describe('Apicco Client', () => {
     beforeEach(() => {
       nock('http://apicco.test')
         .post('/api/v1/fruits.list')
-        .replyWithError({
+        .reply(400, {
           error: 'Bad Request',
           message: 'Invalid Request Body',
           statusCode: 400

@@ -24,6 +24,6 @@
     "nock": "^9.2.6"
   },
   "dependencies": {
-    "tiny-json-http": "^7.0.0"
+    "isomorphic-fetch": "^2.2.1"
   }
 }
