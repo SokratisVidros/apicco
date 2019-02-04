@@ -1,6 +1,6 @@
 # Apicco-SDK
 
-Apicco SDK creates dynamically an [Apicco API](https://github.com/SokratisVidros/apicco/blob/master/lib/README.md) client.
+Apicco SDK creates dynamically an [Apicco API](https://github.com/SokratisVidros/apicco/blob/master/lib/README.md) client, that works both in Node and browser environments.
 
 ```
 POST /api/movies.create      api.movies.create({ title: 'Foo' })

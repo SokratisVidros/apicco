@@ -1,4 +1,5 @@
-const http = require('tiny-json-http');
+require('isomorphic-fetch');
+
 const { promisify } = require('./helpers');
 
 function buildRequest(url, validate, intercept) {
@@ -19,14 +20,26 @@ function buildRequest(url, validate, intercept) {
     };
 
     return intercept(req)
-      .then(req => http.post(req, (err, res) => {
-        if (err) {
-          callback(err);
-          return;
-        }
-        callback(null, res.body);
-      }))
-      .catch(e => callback(e));
+      .then(req =>
+        fetch(req.url, {
+          method: 'POST',
+          headers: req.headers,
+          body: data
+        })
+          .then(response => {
+            const ok = response.ok;
+
+            response.text().then(text => {
+              const res = text.length ? JSON.parse(text) : text;
+
+              callback(
+                ok ? null : res,
+                ok ? res : undefined
+              )
+            });
+          })
+          .catch(e => callback(e))
+      )
   }
 
   return function request(action, data, callback) {
