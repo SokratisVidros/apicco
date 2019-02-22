@@ -19,27 +19,21 @@ function buildRequest(url, validate, intercept) {
       data
     };
 
-    return intercept(req)
-      .then(req =>
-        fetch(req.url, {
-          method: 'POST',
-          headers: req.headers,
-          body: data
-        })
-          .then(response => {
-            const ok = response.ok;
+    return intercept(req).then(req => fetch(req.url, {
+      method: 'POST',
+      headers: req.headers,
+      body: JSON.stringify(data)
+    })
+      .then((response) => {
+        const ok = response.ok;
 
-            response.text().then(text => {
-              const res = text.length ? JSON.parse(text) : text;
+        response.text().then((text) => {
+          const res = text.length ? JSON.parse(text) : text;
 
-              callback(
-                ok ? null : res,
-                ok ? res : undefined
-              )
-            });
-          })
-          .catch(e => callback(e))
-      )
+          callback(ok ? null : res, ok ? res : undefined);
+        });
+      })
+      .catch(e => callback(e)));
   }
 
   return function request(action, data, callback) {
