@@ -55,7 +55,7 @@ describe('Apicco Client', () => {
   describe('request method on error', () => {
     beforeEach(() => {
       nock('http://apicco.test')
-        .post('/api/v1/fruits.list')
+        .post('/api/v1/fruits.list', '{"bar":"foo"}')
         .reply(400, {
           error: 'Bad Request',
           message: 'Invalid Request Body',
@@ -65,7 +65,7 @@ describe('Apicco Client', () => {
 
     it('exposes a promisified api', async () => {
       try {
-        await apicco.fruits.list();
+        await apicco.fruits.list({ bar: 'foo' });
       } catch (err) {
         expect(err).toEqual({
           error: 'Bad Request',
@@ -76,7 +76,7 @@ describe('Apicco Client', () => {
     });
 
     it('request methods exposes a callback api', (done) => {
-      apicco.fruits.list((err, fruits) => {
+      apicco.fruits.list({ bar: 'foo' }, (err, fruits) => {
         expect(err).toEqual({
           error: 'Bad Request',
           message: 'Invalid Request Body',
