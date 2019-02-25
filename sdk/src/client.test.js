@@ -38,9 +38,13 @@ describe('Apicco Client', () => {
         .reply(200, ['🍉', '🍊', '🍋']);
     });
 
-    it('exposes a promisified api', async () => {
+    it('exposes a try catch api', async () => {
       const fruits = await apicco.fruits.list();
       expect(fruits).toEqual(['🍉', '🍊', '🍋']);
+    });
+
+    it('exposes a promisified api', async () => {
+      await expect(apicco.fruits.list()).resolves.toEqual(['🍉', '🍊', '🍋']);
     });
 
     it('request methods exposes a callback api', (done) => {
@@ -63,7 +67,7 @@ describe('Apicco Client', () => {
         });
     });
 
-    it('exposes a promisified api', async () => {
+    it('exposes a try catch api', async () => {
       try {
         await apicco.fruits.list({ bar: 'foo' });
       } catch (err) {
@@ -73,6 +77,14 @@ describe('Apicco Client', () => {
           statusCode: 400
         });
       }
+    });
+
+    it('exposes a promisified api', async () => {
+      await expect(apicco.fruits.list()).rejects.toEqual({
+        error: 'Bad Request',
+        message: 'Invalid Request Body',
+        statusCode: 400
+      });
     });
 
     it('request methods exposes a callback api', (done) => {
