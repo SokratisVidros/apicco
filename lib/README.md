@@ -23,6 +23,7 @@ Apicco leverages [convention over configuration](https://en.wikipedia.org/wiki/C
 - [Parameter validation](#parameter-validation)
 - [Middleware interception](#options)
 - [Discovery endpoint](#discovery)
+- [Request body formatting](#formatting)
 - [Minimal SDK](https://github.com/SokratisVidros/apicco/blob/master/sdk/README.md)
 - [Versionless clients](https://github.com/SokratisVidros/apicco/blob/master/sdk/README.md)
 
@@ -80,6 +81,14 @@ If the validation fails, an HTTP 400 response will be returned to the client, al
 Apicco exposes a discovery endpoint that contains a JSON representation of all the API resources and action files and is used by SDKs (clients) upon initialization.
 
 The discover **GET** endpoint is mounted at `/{prefix}/discovery`.
+
+<a name="formatting"></a>
+
+#### Formatting
+
+Apicco can be also used for request body conversions and formatting. Apicco uses [Joi](https://github.com/hapijs/joi). That is, if the validation convert option is on (enabled by default), a string will be converted using the specified modifiers for string.lowercase(), string.uppercase(), string.trim(), and each replacement specified with string.replace().
+
+The converted request body can be accessed at `ctx.request.validatedBody`;
 
 ### Action files
 
