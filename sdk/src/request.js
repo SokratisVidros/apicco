@@ -1,4 +1,5 @@
 require('isomorphic-fetch');
+const packageJSON = require('../package.json');
 
 const { promisify } = require('./helpers');
 
@@ -14,7 +15,8 @@ function buildRequest(url, validate, intercept) {
     const req = {
       url: `${url}/${action}`,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': `Apicco JS SDK/${packageJSON.version}`
       },
       data
     };
