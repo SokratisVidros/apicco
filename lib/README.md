@@ -24,7 +24,7 @@ Apicco leverages [convention over configuration](https://en.wikipedia.org/wiki/C
 - [Middleware interception](#options)
 - [Discovery endpoint](#discovery)
 - [Request body formatting](#formatting)
-- [Minimal SDK](https://github.com/SokratisVidros/apicco/blob/master/sdk/README.md)
+- [Minimal SDK](https://github.com/SokratisVidros/apicco/blob/master/sdk/js/README.md)
 - [Versionless clients](https://github.com/SokratisVidros/apicco/blob/master/sdk/README.md)
 
 <a name="architecture"></a>

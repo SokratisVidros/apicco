@@ -1,4 +1,4 @@
-const apicco = require('../sdk/index');
+const apicco = require('../sdk/js/index');
 
 apicco({
   origin: 'http://localhost:3000'

@@ -24,7 +24,6 @@ Apicco middleware is a dynamic Koa router middleware that maps folder & file str
 
 Apicco SDK creates dynamically an Apicco API client.
 
-- [NPM package](https://www.npmjs.com/package/apicco-sdk)
 - [Documentation](sdk/README.md)
 
 ## License
