@@ -10,7 +10,7 @@ async function discover(api, origin, relPath, intercept) {
         'Content-Type': 'application/json'
       }
     });
-    api = (await fetch(req.url, {...req}).then(res => res.json()));
+    api = await fetch(req.url, { ...req }).then(res => res.json());
   }
 
   return api;
