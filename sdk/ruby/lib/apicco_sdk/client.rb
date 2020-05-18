@@ -1,5 +1,7 @@
 module ApiccoSDK
   class Client
+    include ::ApiccoSDK::Helpers
+
     def initialize(origin, rel_path:'api/v1', api:{}, intercept: ->(req) { req })
       @rel_path = rel_path
       @origin = origin
@@ -8,11 +10,12 @@ module ApiccoSDK
     end
 
     def method_missing(m, *args, &block)
-      super unless @api.key?(m)
+      method_name = m.to_s
+      super unless @api.key?(method_name)
 
-      data = (args[0] || {}).try(:with_indifferent_access)
+      data = (args[0] || {}).transform_keys!(&:to_s) 
 
-      action, params = @api[m]
+      action, params = @api[method_name]
 
       required_params = params.inject([]) do |memo, p|
         memo << p[1..-1] if p[0] == "*"
@@ -44,11 +47,10 @@ module ApiccoSDK
       h
         .inject({}) do |memo, item|
           k, v = item
-          new_key = k.gsub(".", "_").underscore
+          new_key = underscore(k.gsub(".", "_"))
           memo[new_key] = [k, v]
           memo
         end
-        .with_indifferent_access
     end
 
     def request(method, url, payload = nil, headers = {})
