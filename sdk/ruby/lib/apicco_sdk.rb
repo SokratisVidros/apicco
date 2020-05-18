@@ -1,6 +1,5 @@
-require "active_support/inflector"
-require "active_support/core_ext/hash"
 require "json"
 require "rest-client"
 require "apicco_sdk/version"
+require "apicco_sdk/helpers"
 require "apicco_sdk/client"
