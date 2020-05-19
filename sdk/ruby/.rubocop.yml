@@ -1,0 +1,30 @@
+AllCops:
+  Exclude:
+    - "config/**/*.rb"
+
+Metrics/AbcSize:
+  Max: 40
+
+Metrics/ClassLength:
+  Max: 1000
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/MethodLength:
+  Max: 40
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
