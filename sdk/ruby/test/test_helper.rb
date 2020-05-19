@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 
-require "apicco_sdk"
+require "apicco-sdk"
 require "minitest/autorun"
 require 'webmock/minitest'
 require "mocha/minitest"
