@@ -50,6 +50,7 @@ class ClientTest < Minitest::Test
         body: payload.to_json,
         headers: {
           'Accept'=>'application/json',
+          'Content-Type'=>'application/json',
           'User-Agent'=>"Apicco Ruby SDK #{ApiccoSDK::VERSION}"
         }).
       to_return(status: 200, body: response_payload.to_json)
