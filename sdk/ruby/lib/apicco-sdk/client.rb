@@ -70,9 +70,9 @@ module ApiccoSDK
         method: method, 
         url: url, 
         payload: payload,
-        content_type: :json,
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
           "User-Agent" => "Apicco Ruby SDK #{VERSION}"
         }.merge(headers)
       }
