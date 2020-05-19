@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-gem build apicco_sdk.gemspec
+gem build apicco-sdk.gemspec
 gem push apicco-sdk-*.gem
 rm apicco-sdk-*.gem

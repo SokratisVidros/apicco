@@ -15,7 +15,7 @@ POST /api/movies.delete      api.movies_delete(movie_id: 42)
 ## Usage
 
 ```ruby
-require 'apicco-sdk'
+> require 'apicco-sdk'
 > token = 'deadbeef'
 > intercept = ->(req) { req[:headers]["Authorization"]="Bearer #{token}" }
 > api = ::ApiccoSDK::Client.new('http://example.com', rel_path:'api/v2', intercept:intercept)
