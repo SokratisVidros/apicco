@@ -12,6 +12,10 @@ POST /api/movies.update      api.movies_update(movie_id: 42, title: 'Bar')
 POST /api/movies.delete      api.movies_delete(movie_id: 42)
 ```
 
+## Prerequisites
+
+- Ruby version >= 2.6 (use rvm https://rvm.io/rvm/basics)
+
 ## Usage
 
 ```ruby
