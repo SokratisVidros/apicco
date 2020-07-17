@@ -111,6 +111,13 @@ const validate = {
   id: Joi.number().integer().required(),
   name: Joi.string().max(256)
 };
+/* 
+// OR
+const validate = Joi.object({
+  id: Joi.number().integer().required(),
+  name: Joi.string().max(256)
+});
+*/
 
 async function handle({ request, response }) {
   response.status = 200;
