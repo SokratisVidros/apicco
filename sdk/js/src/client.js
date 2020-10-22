@@ -14,7 +14,7 @@ async function createClient({
 
   const fullUrl = url.resolve(origin, relPath);
   const validate = buildValidate(api);
-  const req = buildRequest(fullUrl, validate, intercept);
+  const req = buildRequest(fullUrl, validate, intercept, api.__meta);
 
   return buildNsFromApi(api, {}, req);
 }
