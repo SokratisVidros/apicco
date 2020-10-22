@@ -10,7 +10,15 @@ async function discover(api, origin, relPath, intercept) {
         'Content-Type': 'application/json'
       }
     });
-    api = await fetch(req.url, { ...req }).then(res => res.json());
+
+    api = await fetch(req.url, { ...req })
+      .then(res => Promise.all([res.json(), res.headers]))
+      .then(([response, headers]) => ({
+        ...response,
+        __meta: {
+          withCredentials: headers.get('Access-Control-Allow-Credentials')
+        }
+      }));
   }
 
   return api;

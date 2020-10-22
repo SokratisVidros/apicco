@@ -16,6 +16,10 @@ function promisify(orig) {
 
 function buildNsFromApi(api, ns, request) {
   Object.keys(api).forEach((key) => {
+    if (key === '__meta') {
+      return;
+    }
+
     // split key namespacing, example users.info --> ['users', 'info']
     const parts = key.split('.');
 

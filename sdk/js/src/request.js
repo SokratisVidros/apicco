@@ -3,7 +3,7 @@ const packageJSON = require('../package.json');
 
 const { promisify } = require('./helpers');
 
-function buildRequest(url, validate, intercept) {
+function buildRequest(url, validate, intercept, meta) {
   function doRequest(action, data, callback) {
     const err = validate(action, data);
 
@@ -24,7 +24,8 @@ function buildRequest(url, validate, intercept) {
     return intercept(req).then(req => fetch(req.url, {
       method: 'POST',
       headers: req.headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: meta.withCredentials ? 'include' : 'same-origin'
     })
       .then((response) => {
         const ok = response.ok;
