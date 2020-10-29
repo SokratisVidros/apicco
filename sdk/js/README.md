@@ -22,6 +22,16 @@ apicco({
 });
 ```
 
+### Sending session cookies along with requests (`credentials: include`)
+
+Apicco will detect access control headers sent by the server during `/discovery` request and will include credentials in subsequent xhr requests.
+
+Prerequisite for that is the server to send the following headers:
+```
+  'Access-Control-Allow-Credentials': true,
+  'Access-Control-Expose-Headers': 'Access-Control-Allow-Credentials'
+```
+
 ## RPC style method invocation
 
 Apicco SDK enables developers to invoke remote endpoints in an RPC fashion. For example:
