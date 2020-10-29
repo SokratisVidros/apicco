@@ -1,30 +1,46 @@
 /* eslint-env jest */
-
+require('isomorphic-fetch');
 const nock = require('nock');
+
+const fetchSpy = jest.spyOn(window, 'fetch');
 const apiccoClient = require('./client');
 
 nock.disableNetConnect();
+
+const makeApicco = ({ withCredentials = false } = {}) => {
+  nock('http://apicco.test')
+    .get('/api/v1/discovery')
+    .reply(
+      200,
+      {
+        'fruits.list': [],
+        'fruits.info': ['*fruit_id'],
+        'fruits.eat': ['*name', '*vitamins', 'ripe']
+      },
+      withCredentials
+        ? {
+          'Access-Control-Allow-Credentials': true,
+          'Access-Control-Expose-Headers': 'Access-Control-Allow-Credentials'
+        }
+        : {}
+    );
+
+  return apiccoClient({
+    origin: 'http://apicco.test',
+    relPath: 'api/v1'
+  });
+};
 
 describe('Apicco Client', () => {
   let apicco;
 
   beforeEach(async () => {
-    nock('http://apicco.test')
-      .get('/api/v1/discovery')
-      .reply(200, {
-        'fruits.list': [],
-        'fruits.info': ['*fruit_id'],
-        'fruits.eat': ['*name', '*vitamins', 'ripe']
-      });
-
-    apicco = await apiccoClient({
-      origin: 'http://apicco.test',
-      relPath: 'api/v1'
-    });
+    apicco = await makeApicco();
   });
 
   afterEach(() => {
     nock.cleanAll();
+    jest.clearAllMocks();
   });
 
   it('discovers all API methods along with their parameters automatically', () => {
@@ -126,6 +142,30 @@ describe('Apicco Client', () => {
       } catch (err) {
         expect(err.message).toBe('fruits.eat missing params: name, vitamins');
       }
+    });
+  });
+
+  describe('request method with credential headers', () => {
+    const filterFruitsListCalls = calls => calls.filter(
+      ([fetchUrl, fetchParams]) => fetchUrl.indexOf('fruits.list') > -1
+    );
+
+    beforeEach(() => {
+      nock('http://apicco.test')
+        .post('/api/v1/fruits.list')
+        .reply(200, ['🍉', '🍊', '🍋']);
+    });
+
+    it('sends requests using credential:include when Access-Control-Allow-Credentials is set on server', async () => {
+      apicco = await makeApicco({ withCredentials: true });
+      await apicco.fruits.list();
+      expect(filterFruitsListCalls(fetchSpy.mock.calls)).toMatchSnapshot();
+    });
+
+    it('send requests using credential:same-origin (default) when no Access-Control headers are set on server', async () => {
+      apicco = await makeApicco({ withCredentials: false });
+      await apicco.fruits.list();
+      expect(filterFruitsListCalls(fetchSpy.mock.calls)).toMatchSnapshot();
     });
   });
 });
