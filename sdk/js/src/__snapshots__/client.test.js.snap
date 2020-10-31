@@ -9,37 +9,3 @@ Object {
   },
 }
 `;
-
-exports[`Apicco Client request method with credential headers send requests using credential:same-origin (default) when no Access-Control headers are set on server 1`] = `
-Array [
-  Array [
-    "http://apicco.test/api/v1/fruits.list",
-    Object {
-      "body": undefined,
-      "credentials": "same-origin",
-      "headers": Object {
-        "Content-Type": "application/json",
-        "User-Agent": "Apicco JS SDK/1.0.10",
-      },
-      "method": "POST",
-    },
-  ],
-]
-`;
-
-exports[`Apicco Client request method with credential headers sends requests using credential:include when Access-Control-Allow-Credentials is set on server 1`] = `
-Array [
-  Array [
-    "http://apicco.test/api/v1/fruits.list",
-    Object {
-      "body": undefined,
-      "credentials": "include",
-      "headers": Object {
-        "Content-Type": "application/json",
-        "User-Agent": "Apicco JS SDK/1.0.10",
-      },
-      "method": "POST",
-    },
-  ],
-]
-`;

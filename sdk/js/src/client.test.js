@@ -15,19 +15,19 @@ const makeApicco = ({ withCredentials = false } = {}) => {
       {
         'fruits.list': [],
         'fruits.info': ['*fruit_id'],
-        'fruits.eat': ['*name', '*vitamins', 'ripe']
+        'fruits.eat': ['*name', '*vitamins', 'ripe'],
       },
       withCredentials
         ? {
-          'Access-Control-Allow-Credentials': true,
-          'Access-Control-Expose-Headers': 'Access-Control-Allow-Credentials'
-        }
+            'Access-Control-Allow-Credentials': true,
+            'Access-Control-Expose-Headers': 'Access-Control-Allow-Credentials',
+          }
         : {}
     );
 
   return apiccoClient({
     origin: 'http://apicco.test',
-    relPath: 'api/v1'
+    relPath: 'api/v1',
   });
 };
 
@@ -79,7 +79,7 @@ describe('Apicco Client', () => {
         .reply(400, {
           error: 'Bad Request',
           message: 'Invalid Request Body',
-          statusCode: 400
+          statusCode: 400,
         });
     });
 
@@ -90,7 +90,7 @@ describe('Apicco Client', () => {
         expect(err).toEqual({
           error: 'Bad Request',
           message: 'Invalid Request Body',
-          statusCode: 400
+          statusCode: 400,
         });
       }
     });
@@ -99,7 +99,7 @@ describe('Apicco Client', () => {
       await expect(apicco.fruits.list({ bar: 'foo' })).rejects.toEqual({
         error: 'Bad Request',
         message: 'Invalid Request Body',
-        statusCode: 400
+        statusCode: 400,
       });
     });
 
@@ -108,7 +108,7 @@ describe('Apicco Client', () => {
         expect(err).toEqual({
           error: 'Bad Request',
           message: 'Invalid Request Body',
-          statusCode: 400
+          statusCode: 400,
         });
         expect(fruits).toBeUndefined();
         done();
@@ -118,9 +118,7 @@ describe('Apicco Client', () => {
 
   describe('request method when response is empty', () => {
     beforeEach(() => {
-      nock('http://apicco.test')
-        .post('/api/v1/fruits.list')
-        .reply(null);
+      nock('http://apicco.test').post('/api/v1/fruits.list').reply(null);
     });
 
     it('exposes a promisified api', async () => {
@@ -131,9 +129,7 @@ describe('Apicco Client', () => {
 
   describe('validations', () => {
     beforeEach(() => {
-      nock('http://apicco.test')
-        .post('/api/v1/fruits.eat')
-        .reply(204);
+      nock('http://apicco.test').post('/api/v1/fruits.eat').reply(204);
     });
 
     it('validate required parameters for the action request', async () => {
@@ -146,9 +142,10 @@ describe('Apicco Client', () => {
   });
 
   describe('request method with credential headers', () => {
-    const filterFruitsListCalls = calls => calls.filter(
-      ([fetchUrl, fetchParams]) => fetchUrl.indexOf('fruits.list') > -1
-    );
+    const filterFruitsListCalls = (calls) =>
+      calls.filter(
+        ([fetchUrl, fetchParams]) => fetchUrl.indexOf('fruits.list') > -1
+      );
 
     beforeEach(() => {
       nock('http://apicco.test')
@@ -159,13 +156,23 @@ describe('Apicco Client', () => {
     it('sends requests using credential:include when Access-Control-Allow-Credentials is set on server', async () => {
       apicco = await makeApicco({ withCredentials: true });
       await apicco.fruits.list();
-      expect(filterFruitsListCalls(fetchSpy.mock.calls)).toMatchSnapshot();
+      expect(filterFruitsListCalls(fetchSpy.mock.calls)[0]).toMatchObject([
+        'http://apicco.test/api/v1/fruits.list',
+        {
+          credentials: 'include',
+        },
+      ]);
     });
 
     it('send requests using credential:same-origin (default) when no Access-Control headers are set on server', async () => {
       apicco = await makeApicco({ withCredentials: false });
       await apicco.fruits.list();
-      expect(filterFruitsListCalls(fetchSpy.mock.calls)).toMatchSnapshot();
+      expect(filterFruitsListCalls(fetchSpy.mock.calls)[0]).toMatchObject([
+        'http://apicco.test/api/v1/fruits.list',
+        {
+          credentials: 'same-origin',
+        },
+      ]);
     });
   });
 });
