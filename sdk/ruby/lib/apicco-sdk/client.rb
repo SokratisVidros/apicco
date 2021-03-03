@@ -57,7 +57,7 @@ module ApiccoSDK
       response = _execute(method, url, payload, headers)
       parse_response(response) unless response.code == 204
     rescue ::RestClient::ExceptionWithResponse => e
-      raise e if e.http_code > 501
+      raise e if !e.http_code || e.http_code > 501
       parse_response(e.response)
     end
 

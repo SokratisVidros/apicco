@@ -81,4 +81,16 @@ class ClientTest < Minitest::Test
 
     assert_equal(response_payload, response)
   end
+
+  def test_rethrows_network_errors
+    payload = { required_arg1: '1', required_arg2: '2', arg3: '3' }
+
+    stub_discovery_request
+    api = ApiccoSDK::Client.new(@origin)
+    ::RestClient::Request.expects(:execute).raises(RestClient::ExceptionWithResponse)
+
+    assert_raises RestClient::ExceptionWithResponse do
+      api.resource_required_action(payload)
+    end
+  end
 end
